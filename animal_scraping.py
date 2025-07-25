@@ -2,17 +2,18 @@ import requests
 from bs4 import BeautifulSoup
 from openpyxl import Workbook
 
-url = "https://test-scrape-site.onrender.com"
+url = "https://test-scrape-site.onrender.com/animals.html"
 response = requests.get(url)
 response.raise_for_status()
 
 soup = BeautifulSoup(response.text, 'html.parser')
+print(soup.prettify())
 
-animal_cards = soup.find_all('div', class_='animal-card')
+animals = soup.find_all('div', class_='animal-card')
 
 data = []
 
-for card in animal_cards:
+for card in animals:
     name = card.find('h2')
     fact = card.find('p', class_='fact')
     habitat = card.find('p', class_='habitat')
