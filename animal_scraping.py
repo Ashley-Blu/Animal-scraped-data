@@ -7,7 +7,7 @@ response = requests.get(url)
 response.raise_for_status()
 
 soup = BeautifulSoup(response.text, 'html.parser')
-print(soup.prettify())
+#print(soup.prettify())
 
 animals = soup.find_all('div', class_='animal-card')
 
